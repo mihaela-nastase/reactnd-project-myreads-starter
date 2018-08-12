@@ -13,7 +13,7 @@ class BookShelf extends Component {
             {this.props.bookList.map(book => {
               return (
                 <BookItem
-                  key={book.title}
+                  key={book.id}
                   book={book}
                   changeShelf={this.props.changeShelf}
                 />

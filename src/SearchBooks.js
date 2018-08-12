@@ -71,7 +71,7 @@ class SearchBooks extends Component {
             {this.state.books.length > 0 &&
               this.state.books.map(book => (
                 <BookItem
-                  key={book.title}
+                  key={book.id}
                   book={book}
                   changeShelf={this.props.changeShelf}
                 />
