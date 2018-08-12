@@ -10,6 +10,8 @@ class BookItem extends Component {
     */
     const coverImg = this.props.book.imageLinks && this.props.book.imageLinks.thumbnail ? this.props.book.imageLinks.thumbnail : noCover;
     const title = this.props.book.title ? this.props.book.title : "No title available";
+	/*Double check the book has the right shelf*/
+    const assignShelf = this.props.book.shelf ? this.props.book.shelf : "none";
 
     return (
       <li>
@@ -25,9 +27,9 @@ class BookItem extends Component {
             />
 
             <div className="book-shelf-changer">
-              <select value={this.props.book.shelf} onChange={event => {this.props.changeShelf(event, this.props.book)}}>
+              <select value={assignShelf} onChange={event => {this.props.changeShelf(event, this.props.book)}}>
                 {console.log(this.props.book + this.props.book.shelf)}
-                <option value="none" disabled>Move to...</option>
+                <option disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>
