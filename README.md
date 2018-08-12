@@ -1,17 +1,30 @@
 # MyReads Project
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+* [Project-Overview](#project-overview)
+* [Instructions](#instructions)
+* [Starter-Files](#starter-files)
+* [Backend-Server](#backend-server)
+* [Important](#important)
+* [Create-React-App](#create-react-app)
+* [Issues](#issues)
+* [Contributing](#contributing)
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+## Project-Overview
 
-## TL;DR
+This project is built with the starter template provided to Udacity students. The template is a static example of the CSS and HTML markup that could be used, but without any of the React code that was needed to complete the project. I added interactivity to the app by refactoring the static code in this template. I created new JS files for each component and used import/require statements to include them where they were needed.
 
-To get started developing right away:
+## Instructions
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
+To view this project, you need to have Git Bash(on Windows) and Node installed.
+Cd into the folder where you want to clone the project.
+Run git clone https://github.com/mihaela-nastase/reactnd-project-myreads-starter in the terminal.
+Cd into the newly created folder.
+Run npm install.
+Run npm start.
+With your server running, visit the site http://localhost:3000/ in your browser.
 
-## What You're Getting
+## Starter-Files
+The starter files provided were:
 ```bash
 ├── CONTRIBUTING.md
 ├── README.md - This file.
@@ -33,11 +46,9 @@ To get started developing right away:
     └── index.js # You should not need to modify this file. It is used for DOM rendering only.
 ```
 
-Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
+## Backend-Server
 
-## Backend Server
-
-To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
+The provided file [`BooksAPI.js`](src/BooksAPI.js) contained the methods needed to perform necessary operations on the backend:
 
 * [`getAll`](#getall)
 * [`update`](#update)
@@ -52,7 +63,7 @@ getAll()
 ```
 
 * Returns a Promise which resolves to a JSON object containing a collection of book objects.
-* This collection represents the books currently in the bookshelves in your app.
+* This collection represents the books currently in the bookshelves in the app.
 
 ### `update`
 
@@ -76,17 +87,21 @@ search(query)
 
 * query: `<String>`
 * Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
-* These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
+* These books do not know which shelf they are on. They are raw results only. They need to have the correct state while on the search page.
 
 ## Important
 The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
 
-## Create React App
+## Create-React-App
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
+## Issues
+
+I would have liked it if it was clearer which shelf each book is on. In the main page, it is visible when the drop-down list is open (that option is selected at first). In the search page, the option is also selected. Upon adding a book, the option selected for that book only appears after reloading and opening the drop-down list. In the React console, the books are assigned correctly to their shelves.
+Some books on Google are duplicates (they have the same key). This will cause an error in the console. For example, search for 'Drama'.
+There is a warning in the console about multiple modules with names that only differ in casing.
+
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+This repository is my personal project for the FEND program at Udacity. Therefore, I most likely will not accept pull requests.
