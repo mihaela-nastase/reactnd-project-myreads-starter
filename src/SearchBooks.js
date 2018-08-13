@@ -48,14 +48,11 @@ class SearchBooks extends Component {
         }
       });
     } else {
-	  this.updateQuery('');
+	  
       this.setState({ books: [] });
 	}
-  }, 100)
+  }, 10)
   
-  componentWillUnmount(){
-	this.updateQuery.cancel()
-  }
 
   /*We verify if the book id corresponds to a book on the main page, and update its shelf. If it doesn't, we set the shelf to 'none'. Source for the solution: https://github.com/dandenney/my-reads/blob/master/src/SearchBooks.js */
   checkShelf(result) {
@@ -91,14 +88,15 @@ class SearchBooks extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
 		    {/*If books are found, render the books and add the change shelf functionality*/}
-            {this.state.books.length > 0 &&
+			{(this.state.books.length > 0) && (this.state.query.length > 0) &&
               this.state.books.map(book => (
                 <BookItem
                   key={book.id}
                   book={book}
                   changeShelf={this.props.changeShelf}
                 />
-              ))}
+              ))
+			}
           </ol>
         </div>
       </div>
