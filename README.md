@@ -101,6 +101,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 I would have liked it if it was clearer which shelf each book is on. In the main page, it is visible when the drop-down list is open (that option is selected at first). In the search page, the option is also selected. Upon adding a book, the option selected for that book only appears after reloading and opening the drop-down list. In the React console, the books are assigned correctly to their shelves.
 Some books on Google are duplicates (they have the same key). This will cause an error in the console. For example, search for 'Drama'.
 There is a warning in the console about multiple modules with names that only differ in casing.
+I used debounce (https://davidwalsh.name/javascript-debounce-function) and now results display briefly when pressing backspace quickly, before disappearing. I fixed it by setting a second condition before displaying the books, namely that query > 0. I set the interval to 10 for a smoother experience.
+There was an issue with the books in the search page not immediately reflecting the option change. I refactored the changeShelf method to fix this.
 
 ## Contributing
 

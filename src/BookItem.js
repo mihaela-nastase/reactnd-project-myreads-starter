@@ -2,6 +2,17 @@ import React, { Component } from "react";
 import noCover from "./icons/Simple-Image-Not-Found-Icon.svg";
 
 class BookItem extends Component {
+	state = {
+		 currentShelf: this.props.book.shelf,
+	}
+	
+	changeShelf = (event) => {
+      this.props.changeShelf(this.props.book, event.target.value);
+      this.setState({
+        currentShelf: event.target.value
+      });
+	};
+	
   render() {
 
     /* We verify that the cover image exists. If not, we use a default image.
@@ -10,8 +21,6 @@ class BookItem extends Component {
     */
     const coverImg = this.props.book.imageLinks && this.props.book.imageLinks.thumbnail ? this.props.book.imageLinks.thumbnail : noCover;
     const title = this.props.book.title ? this.props.book.title : "No title available";
-	/*Double check the book has the right shelf*/
-    const assignShelf = this.props.book.shelf ? this.props.book.shelf : "none";
 
     return (
       <li>
@@ -27,9 +36,9 @@ class BookItem extends Component {
             />
 
             <div className="book-shelf-changer">
-              <select value={assignShelf} onChange={event => {this.props.changeShelf(event, this.props.book)}}>
+              <select value={this.state.currentShelf} onChange={this.changeShelf}>
                 {console.log(this.props.book + this.props.book.shelf)}
-                <option disabled>Move to...</option>
+                <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>

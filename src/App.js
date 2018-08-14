@@ -11,20 +11,19 @@ class BooksApp extends React.Component {
   };
 
   /*This lifecycle event is invoked immediately after the component is inserted into the DOM. We call 'BooksAPI.getAll', that's going to return as a promise so then we can call '.then'. This function is going to be invoked with our books, so we call 'this.setState' and we pass in books. */
-  componentDidMount() {
-    BooksAPI.getAll().then(books => {
-      console.log(books);
-      this.setState({ books: books });
-    });
+  async componentDidMount() {
+    const books = await BooksAPI.getAll()
+      this.setState({ books });
   }
 
-  changeShelf = (event, book) => {
-    BooksAPI.update(book, event.target.value).then(result => {
-      BooksAPI.getAll().then(books => {
-        this.setState({ books: books });
-      });
-    });
-  };
+  changeShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf);
+	book.shelf = shelf;
+        this.setState(state => ({
+           books: state.books.filter(b => b.id !== book.id).concat([ book ])
+        }));
+	};
+
 
   render() {
 	/*We filter the books so we can easily assign them to their respective shelves in the ListBook component, passing them as props*/
@@ -56,9 +55,7 @@ class BooksApp extends React.Component {
           render={({ history }) => (
             <SearchBooks
               books={this.state.books}
-              changeShelf={(event, book) => {
-                this.changeShelf(event, book);
-              }}
+			  changeShelf={this.changeShelf}
             />
           )}
         />
